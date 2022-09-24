@@ -1,0 +1,486 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 4
+Design : CHIP
+Version: R-2020.09-SP5
+Date   : Tue Jan 18 02:35:07 2022
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+	Parasitic source    : LPE
+	Parasitic mode      : RealRC
+	Extraction mode     : MIN_MAX
+	Extraction derating : -40/25/125
+
+Information: Percent of Arnoldi-based delays = 17.29%
+
+  Startpoint: U0/U2/Z_2_reg_1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U0/U14/op1_reg_44_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.45       0.45
+  U0/U2/Z_2_reg_1_/CLK (DFFSSRX1_HVT)                     0.00       0.45 r
+  U0/U2/Z_2_reg_1_/Q (DFFSSRX1_HVT)                       0.28       0.74 f
+  U0/U2/Z_2[1] (cordic)                                   0.00       0.74 f
+  U0/U14/operand_2[1] (comp_mydesign_0)                   0.00       0.74 f
+  U0/U14/U311/Y (NBUFFX2_HVT)                             0.14 &     0.88 f
+  U0/U14/U312/Y (INVX0_HVT)                               0.15 &     1.02 r
+  U0/U14/U1218/Y (AND4X1_HVT)                             0.21 &     1.23 r
+  U0/U14/U1220/Y (NAND2X0_HVT)                            0.14 &     1.37 f
+  U0/U14/U1221/Y (INVX0_HVT)                              0.12 &     1.49 r
+  U0/U14/U1222/Y (AND2X1_HVT)                             0.11 &     1.60 r
+  U0/U14/U1223/Y (NAND2X0_HVT)                            0.08 &     1.68 f
+  U0/U14/U1224/Y (INVX0_HVT)                              0.08 &     1.76 r
+  U0/U14/U1225/Y (AND2X1_HVT)                             0.10 &     1.86 r
+  U0/U14/U1226/Y (NAND2X0_HVT)                            0.16 &     2.02 f
+  U0/U14/U1227/Y (INVX0_HVT)                              0.13 &     2.14 r
+  U0/U14/U1228/Y (AND2X1_HVT)                             0.12 &     2.26 r
+  U0/U14/U1229/Y (NAND2X0_HVT)                            0.11 &     2.37 f
+  U0/U14/U1230/Y (INVX0_HVT)                              0.09 &     2.46 r
+  U0/U14/U1232/Y (AND2X1_HVT)                             0.10 &     2.56 r
+  U0/U14/U1234/Y (NAND2X0_HVT)                            0.13 &     2.69 f
+  U0/U14/U1235/Y (INVX0_HVT)                              0.10 &     2.79 r
+  U0/U14/U1237/Y (AND2X1_HVT)                             0.11 &     2.90 r
+  U0/U14/U1239/Y (NAND2X0_HVT)                            0.11 &     3.01 f
+  U0/U14/U1240/Y (INVX0_HVT)                              0.08 &     3.10 r
+  U0/U14/U1242/Y (AND2X1_HVT)                             0.10 &     3.20 r
+  U0/U14/U1244/Y (NAND2X0_HVT)                            0.11 &     3.31 f
+  U0/U14/U1245/Y (INVX0_HVT)                              0.08 &     3.39 r
+  U0/U14/U1247/Y (AND2X1_HVT)                             0.10 &     3.49 r
+  U0/U14/U1249/Y (NAND2X0_HVT)                            0.10 &     3.59 f
+  U0/U14/U1250/Y (INVX0_HVT)                              0.07 &     3.66 r
+  U0/U14/U1251/Y (AND2X1_HVT)                             0.09 &     3.75 r
+  U0/U14/U1253/Y (NAND2X0_HVT)                            0.10 &     3.85 f
+  U0/U14/U1254/Y (INVX0_HVT)                              0.10 &     3.95 r
+  U0/U14/U1256/Y (AND2X1_HVT)                             0.11 &     4.06 r
+  U0/U14/U1258/Y (NAND2X0_HVT)                            0.10 &     4.17 f
+  U0/U14/U1259/Y (INVX0_HVT)                              0.07 &     4.24 r
+  U0/U14/U1260/Y (AND2X1_HVT)                             0.10 &     4.34 r
+  U0/U14/U1262/Y (NAND2X0_HVT)                            0.11 &     4.45 f
+  U0/U14/U1263/Y (INVX0_HVT)                              0.10 &     4.55 r
+  U0/U14/U1265/Y (AND2X1_HVT)                             0.10 &     4.65 r
+  U0/U14/U1266/Y (NAND2X0_HVT)                            0.10 &     4.75 f
+  U0/U14/U1267/Y (INVX0_HVT)                              0.09 &     4.84 r
+  U0/U14/U1269/Y (AND2X1_HVT)                             0.10 &     4.94 r
+  U0/U14/U1271/Y (NAND2X0_HVT)                            0.12 &     5.06 f
+  U0/U14/U1272/Y (INVX0_HVT)                              0.10 &     5.16 r
+  U0/U14/U1274/Y (AND2X1_HVT)                             0.10 &     5.26 r
+  U0/U14/U1276/Y (NAND2X0_HVT)                            0.10 &     5.35 f
+  U0/U14/U1277/Y (INVX0_HVT)                              0.08 &     5.43 r
+  U0/U14/U1279/Y (AND2X1_HVT)                             0.10 &     5.53 r
+  U0/U14/U1281/Y (NAND2X0_HVT)                            0.10 &     5.63 f
+  U0/U14/U1282/Y (INVX0_HVT)                              0.07 &     5.70 r
+  U0/U14/U1284/Y (AND2X1_HVT)                             0.10 &     5.80 r
+  U0/U14/U1286/Y (NAND2X0_HVT)                            0.10 &     5.91 f
+  U0/U14/U1287/Y (INVX0_HVT)                              0.09 &     6.00 r
+  U0/U14/U1288/Y (AND2X1_HVT)                             0.10 &     6.09 r
+  U0/U14/U1290/Y (NAND2X0_HVT)                            0.11 &     6.20 f
+  U0/U14/U1291/Y (INVX0_HVT)                              0.09 &     6.28 r
+  U0/U14/U1293/Y (AND2X1_HVT)                             0.10 &     6.38 r
+  U0/U14/U1295/Y (NAND2X0_HVT)                            0.17 &     6.55 f
+  U0/U14/U1296/Y (INVX0_HVT)                              0.11 &     6.66 r
+  U0/U14/U1298/Y (AND2X1_HVT)                             0.12 &     6.78 r
+  U0/U14/U1300/Y (NAND2X0_HVT)                            0.11 &     6.89 f
+  U0/U14/U1301/Y (INVX0_HVT)                              0.08 &     6.97 r
+  U0/U14/U1303/Y (AND2X1_HVT)                             0.09 &     7.06 r
+  U0/U14/U1305/Y (NAND2X0_HVT)                            0.11 &     7.17 f
+  U0/U14/U110/Y (INVX0_HVT)                               0.11 &     7.28 r
+  U0/U14/U1307/Y (AND2X1_HVT)                             0.10 &     7.39 r
+  U0/U14/U1309/Y (NAND2X0_HVT)                            0.13 &     7.51 f
+  U0/U14/U1310/Y (INVX0_HVT)                              0.11 &     7.62 r
+  U0/U14/U1312/Y (AND2X1_HVT)                             0.10 &     7.72 r
+  U0/U14/U1314/Y (NAND2X0_HVT)                            0.13 &     7.85 f
+  U0/U14/U1315/Y (INVX0_HVT)                              0.12 &     7.96 r
+  U0/U14/U1317/Y (AND2X1_HVT)                             0.13 &     8.09 r
+  U0/U14/U1319/Y (NAND2X0_HVT)                            0.09 &     8.18 f
+  U0/U14/U112/Y (INVX0_HVT)                               0.09 &     8.27 r
+  U0/U14/U1321/Y (AND2X1_HVT)                             0.10 &     8.37 r
+  U0/U14/U1323/Y (NAND2X0_HVT)                            0.13 &     8.50 f
+  U0/U14/U1329/Y (NOR4X1_HVT)                             0.26 &     8.76 r
+  U0/U14/U1330/Y (NAND2X0_HVT)                            0.10 &     8.85 f
+  U0/U14/U1331/Y (AND2X1_HVT)                             0.12 &     8.97 f
+  U0/U14/U1332/Y (AND2X1_HVT)                             0.10 &     9.07 f
+  U0/U14/U1381/Y (NAND3X0_HVT)                            0.08 &     9.14 r
+  U0/U14/U121/Y (INVX1_HVT)                               0.11 &     9.25 f
+  U0/U14/U211/Y (NAND2X0_HVT)                             0.10 &     9.35 r
+  U0/U14/U1216/Y (NBUFFX4_HVT)                            0.13 &     9.47 r
+  U0/U14/U344/Y (AND3X2_HVT)                              0.17 &     9.65 r
+  U0/U14/U1238/Y (INVX8_HVT)                              0.11 @     9.76 f
+  U0/U14/U1261/Y (OR2X2_HVT)                              0.15 @     9.91 f
+  U0/U14/U1243/Y (NBUFFX4_HVT)                            0.13 @    10.04 f
+  U0/U14/U2112/Y (NAND3X0_HVT)                            0.09 @    10.14 r
+  U0/U14/op1_reg_44_/SETB (DFFSSRX1_HVT)                  0.00 &    10.14 r
+  data arrival time                                                 10.14
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (propagated)                        0.42      10.42
+  U0/U14/op1_reg_44_/CLK (DFFSSRX1_HVT)                   0.00      10.42 r
+  library setup time                                     -0.19      10.23
+  data required time                                                10.23
+  --------------------------------------------------------------------------
+  data required time                                                10.23
+  data arrival time                                                -10.14
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.09
+
+
+  Startpoint: U0/U2/Z_2_reg_1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U0/U14/op1_reg_34_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.45       0.45
+  U0/U2/Z_2_reg_1_/CLK (DFFSSRX1_HVT)                     0.00       0.45 r
+  U0/U2/Z_2_reg_1_/Q (DFFSSRX1_HVT)                       0.28       0.74 f
+  U0/U2/Z_2[1] (cordic)                                   0.00       0.74 f
+  U0/U14/operand_2[1] (comp_mydesign_0)                   0.00       0.74 f
+  U0/U14/U311/Y (NBUFFX2_HVT)                             0.14 &     0.88 f
+  U0/U14/U312/Y (INVX0_HVT)                               0.15 &     1.02 r
+  U0/U14/U1218/Y (AND4X1_HVT)                             0.21 &     1.23 r
+  U0/U14/U1220/Y (NAND2X0_HVT)                            0.14 &     1.37 f
+  U0/U14/U1221/Y (INVX0_HVT)                              0.12 &     1.49 r
+  U0/U14/U1222/Y (AND2X1_HVT)                             0.11 &     1.60 r
+  U0/U14/U1223/Y (NAND2X0_HVT)                            0.08 &     1.68 f
+  U0/U14/U1224/Y (INVX0_HVT)                              0.08 &     1.76 r
+  U0/U14/U1225/Y (AND2X1_HVT)                             0.10 &     1.86 r
+  U0/U14/U1226/Y (NAND2X0_HVT)                            0.16 &     2.02 f
+  U0/U14/U1227/Y (INVX0_HVT)                              0.13 &     2.14 r
+  U0/U14/U1228/Y (AND2X1_HVT)                             0.12 &     2.26 r
+  U0/U14/U1229/Y (NAND2X0_HVT)                            0.11 &     2.37 f
+  U0/U14/U1230/Y (INVX0_HVT)                              0.09 &     2.46 r
+  U0/U14/U1232/Y (AND2X1_HVT)                             0.10 &     2.56 r
+  U0/U14/U1234/Y (NAND2X0_HVT)                            0.13 &     2.69 f
+  U0/U14/U1235/Y (INVX0_HVT)                              0.10 &     2.79 r
+  U0/U14/U1237/Y (AND2X1_HVT)                             0.11 &     2.90 r
+  U0/U14/U1239/Y (NAND2X0_HVT)                            0.11 &     3.01 f
+  U0/U14/U1240/Y (INVX0_HVT)                              0.08 &     3.10 r
+  U0/U14/U1242/Y (AND2X1_HVT)                             0.10 &     3.20 r
+  U0/U14/U1244/Y (NAND2X0_HVT)                            0.11 &     3.31 f
+  U0/U14/U1245/Y (INVX0_HVT)                              0.08 &     3.39 r
+  U0/U14/U1247/Y (AND2X1_HVT)                             0.10 &     3.49 r
+  U0/U14/U1249/Y (NAND2X0_HVT)                            0.10 &     3.59 f
+  U0/U14/U1250/Y (INVX0_HVT)                              0.07 &     3.66 r
+  U0/U14/U1251/Y (AND2X1_HVT)                             0.09 &     3.75 r
+  U0/U14/U1253/Y (NAND2X0_HVT)                            0.10 &     3.85 f
+  U0/U14/U1254/Y (INVX0_HVT)                              0.10 &     3.95 r
+  U0/U14/U1256/Y (AND2X1_HVT)                             0.11 &     4.06 r
+  U0/U14/U1258/Y (NAND2X0_HVT)                            0.10 &     4.17 f
+  U0/U14/U1259/Y (INVX0_HVT)                              0.07 &     4.24 r
+  U0/U14/U1260/Y (AND2X1_HVT)                             0.10 &     4.34 r
+  U0/U14/U1262/Y (NAND2X0_HVT)                            0.11 &     4.45 f
+  U0/U14/U1263/Y (INVX0_HVT)                              0.10 &     4.55 r
+  U0/U14/U1265/Y (AND2X1_HVT)                             0.10 &     4.65 r
+  U0/U14/U1266/Y (NAND2X0_HVT)                            0.10 &     4.75 f
+  U0/U14/U1267/Y (INVX0_HVT)                              0.09 &     4.84 r
+  U0/U14/U1269/Y (AND2X1_HVT)                             0.10 &     4.94 r
+  U0/U14/U1271/Y (NAND2X0_HVT)                            0.12 &     5.06 f
+  U0/U14/U1272/Y (INVX0_HVT)                              0.10 &     5.16 r
+  U0/U14/U1274/Y (AND2X1_HVT)                             0.10 &     5.26 r
+  U0/U14/U1276/Y (NAND2X0_HVT)                            0.10 &     5.35 f
+  U0/U14/U1277/Y (INVX0_HVT)                              0.08 &     5.43 r
+  U0/U14/U1279/Y (AND2X1_HVT)                             0.10 &     5.53 r
+  U0/U14/U1281/Y (NAND2X0_HVT)                            0.10 &     5.63 f
+  U0/U14/U1282/Y (INVX0_HVT)                              0.07 &     5.70 r
+  U0/U14/U1284/Y (AND2X1_HVT)                             0.10 &     5.80 r
+  U0/U14/U1286/Y (NAND2X0_HVT)                            0.10 &     5.91 f
+  U0/U14/U1287/Y (INVX0_HVT)                              0.09 &     6.00 r
+  U0/U14/U1288/Y (AND2X1_HVT)                             0.10 &     6.09 r
+  U0/U14/U1290/Y (NAND2X0_HVT)                            0.11 &     6.20 f
+  U0/U14/U1291/Y (INVX0_HVT)                              0.09 &     6.28 r
+  U0/U14/U1293/Y (AND2X1_HVT)                             0.10 &     6.38 r
+  U0/U14/U1295/Y (NAND2X0_HVT)                            0.17 &     6.55 f
+  U0/U14/U1296/Y (INVX0_HVT)                              0.11 &     6.66 r
+  U0/U14/U1298/Y (AND2X1_HVT)                             0.12 &     6.78 r
+  U0/U14/U1300/Y (NAND2X0_HVT)                            0.11 &     6.89 f
+  U0/U14/U1301/Y (INVX0_HVT)                              0.08 &     6.97 r
+  U0/U14/U1303/Y (AND2X1_HVT)                             0.09 &     7.06 r
+  U0/U14/U1305/Y (NAND2X0_HVT)                            0.11 &     7.17 f
+  U0/U14/U110/Y (INVX0_HVT)                               0.11 &     7.28 r
+  U0/U14/U1307/Y (AND2X1_HVT)                             0.10 &     7.39 r
+  U0/U14/U1309/Y (NAND2X0_HVT)                            0.13 &     7.51 f
+  U0/U14/U1310/Y (INVX0_HVT)                              0.11 &     7.62 r
+  U0/U14/U1312/Y (AND2X1_HVT)                             0.10 &     7.72 r
+  U0/U14/U1314/Y (NAND2X0_HVT)                            0.13 &     7.85 f
+  U0/U14/U1315/Y (INVX0_HVT)                              0.12 &     7.96 r
+  U0/U14/U1317/Y (AND2X1_HVT)                             0.13 &     8.09 r
+  U0/U14/U1319/Y (NAND2X0_HVT)                            0.09 &     8.18 f
+  U0/U14/U112/Y (INVX0_HVT)                               0.09 &     8.27 r
+  U0/U14/U1321/Y (AND2X1_HVT)                             0.10 &     8.37 r
+  U0/U14/U1323/Y (NAND2X0_HVT)                            0.13 &     8.50 f
+  U0/U14/U1329/Y (NOR4X1_HVT)                             0.26 &     8.76 r
+  U0/U14/U1330/Y (NAND2X0_HVT)                            0.10 &     8.85 f
+  U0/U14/U1331/Y (AND2X1_HVT)                             0.12 &     8.97 f
+  U0/U14/U1332/Y (AND2X1_HVT)                             0.10 &     9.07 f
+  U0/U14/U1381/Y (NAND3X0_HVT)                            0.08 &     9.14 r
+  U0/U14/U121/Y (INVX1_HVT)                               0.11 &     9.25 f
+  U0/U14/U211/Y (NAND2X0_HVT)                             0.10 &     9.35 r
+  U0/U14/U1216/Y (NBUFFX4_HVT)                            0.13 &     9.47 r
+  U0/U14/U344/Y (AND3X2_HVT)                              0.17 &     9.65 r
+  U0/U14/U1238/Y (INVX8_HVT)                              0.11 @     9.76 f
+  U0/U14/U100/Y (OR2X1_HVT)                               0.14 @     9.90 f
+  U0/U14/U1241/Y (NBUFFX2_HVT)                            0.13 &    10.03 f
+  U0/U14/U2021/Y (NAND3X0_HVT)                            0.08 &    10.11 r
+  U0/U14/op1_reg_34_/SETB (DFFSSRX1_HVT)                  0.01 &    10.12 r
+  data arrival time                                                 10.12
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (propagated)                        0.42      10.42
+  U0/U14/op1_reg_34_/CLK (DFFSSRX1_HVT)                   0.00      10.42 r
+  library setup time                                     -0.18      10.23
+  data required time                                                10.23
+  --------------------------------------------------------------------------
+  data required time                                                10.23
+  data arrival time                                                -10.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: U0/U2/Z_2_reg_1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U0/U14/op1_reg_20_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.45       0.45
+  U0/U2/Z_2_reg_1_/CLK (DFFSSRX1_HVT)                     0.00       0.45 r
+  U0/U2/Z_2_reg_1_/Q (DFFSSRX1_HVT)                       0.28       0.74 f
+  U0/U2/Z_2[1] (cordic)                                   0.00       0.74 f
+  U0/U14/operand_2[1] (comp_mydesign_0)                   0.00       0.74 f
+  U0/U14/U311/Y (NBUFFX2_HVT)                             0.14 &     0.88 f
+  U0/U14/U312/Y (INVX0_HVT)                               0.15 &     1.02 r
+  U0/U14/U1218/Y (AND4X1_HVT)                             0.21 &     1.23 r
+  U0/U14/U1220/Y (NAND2X0_HVT)                            0.14 &     1.37 f
+  U0/U14/U1221/Y (INVX0_HVT)                              0.12 &     1.49 r
+  U0/U14/U1222/Y (AND2X1_HVT)                             0.11 &     1.60 r
+  U0/U14/U1223/Y (NAND2X0_HVT)                            0.08 &     1.68 f
+  U0/U14/U1224/Y (INVX0_HVT)                              0.08 &     1.76 r
+  U0/U14/U1225/Y (AND2X1_HVT)                             0.10 &     1.86 r
+  U0/U14/U1226/Y (NAND2X0_HVT)                            0.16 &     2.02 f
+  U0/U14/U1227/Y (INVX0_HVT)                              0.13 &     2.14 r
+  U0/U14/U1228/Y (AND2X1_HVT)                             0.12 &     2.26 r
+  U0/U14/U1229/Y (NAND2X0_HVT)                            0.11 &     2.37 f
+  U0/U14/U1230/Y (INVX0_HVT)                              0.09 &     2.46 r
+  U0/U14/U1232/Y (AND2X1_HVT)                             0.10 &     2.56 r
+  U0/U14/U1234/Y (NAND2X0_HVT)                            0.13 &     2.69 f
+  U0/U14/U1235/Y (INVX0_HVT)                              0.10 &     2.79 r
+  U0/U14/U1237/Y (AND2X1_HVT)                             0.11 &     2.90 r
+  U0/U14/U1239/Y (NAND2X0_HVT)                            0.11 &     3.01 f
+  U0/U14/U1240/Y (INVX0_HVT)                              0.08 &     3.10 r
+  U0/U14/U1242/Y (AND2X1_HVT)                             0.10 &     3.20 r
+  U0/U14/U1244/Y (NAND2X0_HVT)                            0.11 &     3.31 f
+  U0/U14/U1245/Y (INVX0_HVT)                              0.08 &     3.39 r
+  U0/U14/U1247/Y (AND2X1_HVT)                             0.10 &     3.49 r
+  U0/U14/U1249/Y (NAND2X0_HVT)                            0.10 &     3.59 f
+  U0/U14/U1250/Y (INVX0_HVT)                              0.07 &     3.66 r
+  U0/U14/U1251/Y (AND2X1_HVT)                             0.09 &     3.75 r
+  U0/U14/U1253/Y (NAND2X0_HVT)                            0.10 &     3.85 f
+  U0/U14/U1254/Y (INVX0_HVT)                              0.10 &     3.95 r
+  U0/U14/U1256/Y (AND2X1_HVT)                             0.11 &     4.06 r
+  U0/U14/U1258/Y (NAND2X0_HVT)                            0.10 &     4.17 f
+  U0/U14/U1259/Y (INVX0_HVT)                              0.07 &     4.24 r
+  U0/U14/U1260/Y (AND2X1_HVT)                             0.10 &     4.34 r
+  U0/U14/U1262/Y (NAND2X0_HVT)                            0.11 &     4.45 f
+  U0/U14/U1263/Y (INVX0_HVT)                              0.10 &     4.55 r
+  U0/U14/U1265/Y (AND2X1_HVT)                             0.10 &     4.65 r
+  U0/U14/U1266/Y (NAND2X0_HVT)                            0.10 &     4.75 f
+  U0/U14/U1267/Y (INVX0_HVT)                              0.09 &     4.84 r
+  U0/U14/U1269/Y (AND2X1_HVT)                             0.10 &     4.94 r
+  U0/U14/U1271/Y (NAND2X0_HVT)                            0.12 &     5.06 f
+  U0/U14/U1272/Y (INVX0_HVT)                              0.10 &     5.16 r
+  U0/U14/U1274/Y (AND2X1_HVT)                             0.10 &     5.26 r
+  U0/U14/U1276/Y (NAND2X0_HVT)                            0.10 &     5.35 f
+  U0/U14/U1277/Y (INVX0_HVT)                              0.08 &     5.43 r
+  U0/U14/U1279/Y (AND2X1_HVT)                             0.10 &     5.53 r
+  U0/U14/U1281/Y (NAND2X0_HVT)                            0.10 &     5.63 f
+  U0/U14/U1282/Y (INVX0_HVT)                              0.07 &     5.70 r
+  U0/U14/U1284/Y (AND2X1_HVT)                             0.10 &     5.80 r
+  U0/U14/U1286/Y (NAND2X0_HVT)                            0.10 &     5.91 f
+  U0/U14/U1287/Y (INVX0_HVT)                              0.09 &     6.00 r
+  U0/U14/U1288/Y (AND2X1_HVT)                             0.10 &     6.09 r
+  U0/U14/U1290/Y (NAND2X0_HVT)                            0.11 &     6.20 f
+  U0/U14/U1291/Y (INVX0_HVT)                              0.09 &     6.28 r
+  U0/U14/U1293/Y (AND2X1_HVT)                             0.10 &     6.38 r
+  U0/U14/U1295/Y (NAND2X0_HVT)                            0.17 &     6.55 f
+  U0/U14/U1296/Y (INVX0_HVT)                              0.11 &     6.66 r
+  U0/U14/U1298/Y (AND2X1_HVT)                             0.12 &     6.78 r
+  U0/U14/U1300/Y (NAND2X0_HVT)                            0.11 &     6.89 f
+  U0/U14/U1301/Y (INVX0_HVT)                              0.08 &     6.97 r
+  U0/U14/U1303/Y (AND2X1_HVT)                             0.09 &     7.06 r
+  U0/U14/U1305/Y (NAND2X0_HVT)                            0.11 &     7.17 f
+  U0/U14/U110/Y (INVX0_HVT)                               0.11 &     7.28 r
+  U0/U14/U1307/Y (AND2X1_HVT)                             0.10 &     7.39 r
+  U0/U14/U1309/Y (NAND2X0_HVT)                            0.13 &     7.51 f
+  U0/U14/U1310/Y (INVX0_HVT)                              0.11 &     7.62 r
+  U0/U14/U1312/Y (AND2X1_HVT)                             0.10 &     7.72 r
+  U0/U14/U1314/Y (NAND2X0_HVT)                            0.13 &     7.85 f
+  U0/U14/U1315/Y (INVX0_HVT)                              0.12 &     7.96 r
+  U0/U14/U1317/Y (AND2X1_HVT)                             0.13 &     8.09 r
+  U0/U14/U1319/Y (NAND2X0_HVT)                            0.09 &     8.18 f
+  U0/U14/U112/Y (INVX0_HVT)                               0.09 &     8.27 r
+  U0/U14/U1321/Y (AND2X1_HVT)                             0.10 &     8.37 r
+  U0/U14/U1323/Y (NAND2X0_HVT)                            0.13 &     8.50 f
+  U0/U14/U1329/Y (NOR4X1_HVT)                             0.26 &     8.76 r
+  U0/U14/U1330/Y (NAND2X0_HVT)                            0.10 &     8.85 f
+  U0/U14/U1331/Y (AND2X1_HVT)                             0.12 &     8.97 f
+  U0/U14/U1332/Y (AND2X1_HVT)                             0.10 &     9.07 f
+  U0/U14/U1381/Y (NAND3X0_HVT)                            0.08 &     9.14 r
+  U0/U14/U121/Y (INVX1_HVT)                               0.11 &     9.25 f
+  U0/U14/U211/Y (NAND2X0_HVT)                             0.10 &     9.35 r
+  U0/U14/U1216/Y (NBUFFX4_HVT)                            0.13 &     9.47 r
+  U0/U14/U344/Y (AND3X2_HVT)                              0.17 &     9.65 r
+  U0/U14/U1238/Y (INVX8_HVT)                              0.11 @     9.76 f
+  U0/U14/U100/Y (OR2X1_HVT)                               0.14 @     9.90 f
+  U0/U14/U1241/Y (NBUFFX2_HVT)                            0.13 &    10.03 f
+  U0/U14/U2076/Y (NAND3X0_HVT)                            0.09 &    10.11 r
+  U0/U14/op1_reg_20_/SETB (DFFSSRX1_HVT)                  0.00 &    10.12 r
+  data arrival time                                                 10.12
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (propagated)                        0.42      10.42
+  U0/U14/op1_reg_20_/CLK (DFFSSRX1_HVT)                   0.00      10.42 r
+  library setup time                                     -0.19      10.23
+  data required time                                                10.23
+  --------------------------------------------------------------------------
+  data required time                                                10.23
+  data arrival time                                                -10.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.12
+
+
+  Startpoint: U0/U2/Z_2_reg_1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: U0/U14/op1_reg_24_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.45       0.45
+  U0/U2/Z_2_reg_1_/CLK (DFFSSRX1_HVT)                     0.00       0.45 r
+  U0/U2/Z_2_reg_1_/Q (DFFSSRX1_HVT)                       0.28       0.74 f
+  U0/U2/Z_2[1] (cordic)                                   0.00       0.74 f
+  U0/U14/operand_2[1] (comp_mydesign_0)                   0.00       0.74 f
+  U0/U14/U311/Y (NBUFFX2_HVT)                             0.14 &     0.88 f
+  U0/U14/U312/Y (INVX0_HVT)                               0.15 &     1.02 r
+  U0/U14/U1218/Y (AND4X1_HVT)                             0.21 &     1.23 r
+  U0/U14/U1220/Y (NAND2X0_HVT)                            0.14 &     1.37 f
+  U0/U14/U1221/Y (INVX0_HVT)                              0.12 &     1.49 r
+  U0/U14/U1222/Y (AND2X1_HVT)                             0.11 &     1.60 r
+  U0/U14/U1223/Y (NAND2X0_HVT)                            0.08 &     1.68 f
+  U0/U14/U1224/Y (INVX0_HVT)                              0.08 &     1.76 r
+  U0/U14/U1225/Y (AND2X1_HVT)                             0.10 &     1.86 r
+  U0/U14/U1226/Y (NAND2X0_HVT)                            0.16 &     2.02 f
+  U0/U14/U1227/Y (INVX0_HVT)                              0.13 &     2.14 r
+  U0/U14/U1228/Y (AND2X1_HVT)                             0.12 &     2.26 r
+  U0/U14/U1229/Y (NAND2X0_HVT)                            0.11 &     2.37 f
+  U0/U14/U1230/Y (INVX0_HVT)                              0.09 &     2.46 r
+  U0/U14/U1232/Y (AND2X1_HVT)                             0.10 &     2.56 r
+  U0/U14/U1234/Y (NAND2X0_HVT)                            0.13 &     2.69 f
+  U0/U14/U1235/Y (INVX0_HVT)                              0.10 &     2.79 r
+  U0/U14/U1237/Y (AND2X1_HVT)                             0.11 &     2.90 r
+  U0/U14/U1239/Y (NAND2X0_HVT)                            0.11 &     3.01 f
+  U0/U14/U1240/Y (INVX0_HVT)                              0.08 &     3.10 r
+  U0/U14/U1242/Y (AND2X1_HVT)                             0.10 &     3.20 r
+  U0/U14/U1244/Y (NAND2X0_HVT)                            0.11 &     3.31 f
+  U0/U14/U1245/Y (INVX0_HVT)                              0.08 &     3.39 r
+  U0/U14/U1247/Y (AND2X1_HVT)                             0.10 &     3.49 r
+  U0/U14/U1249/Y (NAND2X0_HVT)                            0.10 &     3.59 f
+  U0/U14/U1250/Y (INVX0_HVT)                              0.07 &     3.66 r
+  U0/U14/U1251/Y (AND2X1_HVT)                             0.09 &     3.75 r
+  U0/U14/U1253/Y (NAND2X0_HVT)                            0.10 &     3.85 f
+  U0/U14/U1254/Y (INVX0_HVT)                              0.10 &     3.95 r
+  U0/U14/U1256/Y (AND2X1_HVT)                             0.11 &     4.06 r
+  U0/U14/U1258/Y (NAND2X0_HVT)                            0.10 &     4.17 f
+  U0/U14/U1259/Y (INVX0_HVT)                              0.07 &     4.24 r
+  U0/U14/U1260/Y (AND2X1_HVT)                             0.10 &     4.34 r
+  U0/U14/U1262/Y (NAND2X0_HVT)                            0.11 &     4.45 f
+  U0/U14/U1263/Y (INVX0_HVT)                              0.10 &     4.55 r
+  U0/U14/U1265/Y (AND2X1_HVT)                             0.10 &     4.65 r
+  U0/U14/U1266/Y (NAND2X0_HVT)                            0.10 &     4.75 f
+  U0/U14/U1267/Y (INVX0_HVT)                              0.09 &     4.84 r
+  U0/U14/U1269/Y (AND2X1_HVT)                             0.10 &     4.94 r
+  U0/U14/U1271/Y (NAND2X0_HVT)                            0.12 &     5.06 f
+  U0/U14/U1272/Y (INVX0_HVT)                              0.10 &     5.16 r
+  U0/U14/U1274/Y (AND2X1_HVT)                             0.10 &     5.26 r
+  U0/U14/U1276/Y (NAND2X0_HVT)                            0.10 &     5.35 f
+  U0/U14/U1277/Y (INVX0_HVT)                              0.08 &     5.43 r
+  U0/U14/U1279/Y (AND2X1_HVT)                             0.10 &     5.53 r
+  U0/U14/U1281/Y (NAND2X0_HVT)                            0.10 &     5.63 f
+  U0/U14/U1282/Y (INVX0_HVT)                              0.07 &     5.70 r
+  U0/U14/U1284/Y (AND2X1_HVT)                             0.10 &     5.80 r
+  U0/U14/U1286/Y (NAND2X0_HVT)                            0.10 &     5.91 f
+  U0/U14/U1287/Y (INVX0_HVT)                              0.09 &     6.00 r
+  U0/U14/U1288/Y (AND2X1_HVT)                             0.10 &     6.09 r
+  U0/U14/U1290/Y (NAND2X0_HVT)                            0.11 &     6.20 f
+  U0/U14/U1291/Y (INVX0_HVT)                              0.09 &     6.28 r
+  U0/U14/U1293/Y (AND2X1_HVT)                             0.10 &     6.38 r
+  U0/U14/U1295/Y (NAND2X0_HVT)                            0.17 &     6.55 f
+  U0/U14/U1296/Y (INVX0_HVT)                              0.11 &     6.66 r
+  U0/U14/U1298/Y (AND2X1_HVT)                             0.12 &     6.78 r
+  U0/U14/U1300/Y (NAND2X0_HVT)                            0.11 &     6.89 f
+  U0/U14/U1301/Y (INVX0_HVT)                              0.08 &     6.97 r
+  U0/U14/U1303/Y (AND2X1_HVT)                             0.09 &     7.06 r
+  U0/U14/U1305/Y (NAND2X0_HVT)                            0.11 &     7.17 f
+  U0/U14/U110/Y (INVX0_HVT)                               0.11 &     7.28 r
+  U0/U14/U1307/Y (AND2X1_HVT)                             0.10 &     7.39 r
+  U0/U14/U1309/Y (NAND2X0_HVT)                            0.13 &     7.51 f
+  U0/U14/U1310/Y (INVX0_HVT)                              0.11 &     7.62 r
+  U0/U14/U1312/Y (AND2X1_HVT)                             0.10 &     7.72 r
+  U0/U14/U1314/Y (NAND2X0_HVT)                            0.13 &     7.85 f
+  U0/U14/U1315/Y (INVX0_HVT)                              0.12 &     7.96 r
+  U0/U14/U1317/Y (AND2X1_HVT)                             0.13 &     8.09 r
+  U0/U14/U1319/Y (NAND2X0_HVT)                            0.09 &     8.18 f
+  U0/U14/U112/Y (INVX0_HVT)                               0.09 &     8.27 r
+  U0/U14/U1321/Y (AND2X1_HVT)                             0.10 &     8.37 r
+  U0/U14/U1323/Y (NAND2X0_HVT)                            0.13 &     8.50 f
+  U0/U14/U1329/Y (NOR4X1_HVT)                             0.26 &     8.76 r
+  U0/U14/U1330/Y (NAND2X0_HVT)                            0.10 &     8.85 f
+  U0/U14/U1331/Y (AND2X1_HVT)                             0.12 &     8.97 f
+  U0/U14/U1332/Y (AND2X1_HVT)                             0.10 &     9.07 f
+  U0/U14/U1381/Y (NAND3X0_HVT)                            0.08 &     9.14 r
+  U0/U14/U121/Y (INVX1_HVT)                               0.11 &     9.25 f
+  U0/U14/U211/Y (NAND2X0_HVT)                             0.10 &     9.35 r
+  U0/U14/U1216/Y (NBUFFX4_HVT)                            0.13 &     9.47 r
+  U0/U14/U344/Y (AND3X2_HVT)                              0.17 &     9.65 r
+  U0/U14/U1238/Y (INVX8_HVT)                              0.11 @     9.76 f
+  U0/U14/U100/Y (OR2X1_HVT)                               0.14 @     9.90 f
+  U0/U14/U1241/Y (NBUFFX2_HVT)                            0.13 &    10.03 f
+  U0/U14/U2082/Y (NAND3X0_HVT)                            0.08 &    10.11 r
+  U0/U14/op1_reg_24_/SETB (DFFSSRX1_HVT)                  0.01 &    10.12 r
+  data arrival time                                                 10.12
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (propagated)                        0.42      10.42
+  U0/U14/op1_reg_24_/CLK (DFFSSRX1_HVT)                   0.00      10.42 r
+  library setup time                                     -0.18      10.23
+  data required time                                                10.23
+  --------------------------------------------------------------------------
+  data required time                                                10.23
+  data arrival time                                                -10.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.12
+
+
+1

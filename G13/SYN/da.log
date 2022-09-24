@@ -1,0 +1,1333 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version R-2020.09-SP5 for linux64 - Apr 23, 2021 
+
+                    Copyright (c) 1988 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# set your TOPLEVEL here
+set TOPLEVEL "top_pipe"
+top_pipe
+# change your timing constraint here
+# 4*0.8=3.2 (20% timing margin for 250MHz clock)
+set TEST_CYCLE 9.1
+9.1
+source -echo -verbose 0_readfile.tcl 
+set TOP_DIR $TOPLEVEL
+top_pipe
+set RPT_DIR report
+report
+set NET_DIR netlist
+netlist
+sh rm -rf ./$TOP_DIR
+sh rm -rf ./$RPT_DIR
+sh rm -rf ./$NET_DIR
+sh mkdir ./$TOP_DIR
+sh mkdir ./$RPT_DIR
+sh mkdir ./$NET_DIR
+# define a lib path here
+define_design_lib $TOPLEVEL -path ./$TOPLEVEL
+1
+# Read Design File (add your files here)
+set HDL_DIR "../hdl"
+../hdl
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/top_pipe.v                                             $HDL_DIR/add_v2.v                                             $HDL_DIR/comp.v                                             $HDL_DIR/cordic.v                                             $HDL_DIR/mul_mantissa.v                                             $HDL_DIR/mul.v                                             $HDL_DIR/div_mantissa.v                                             $HDL_DIR/div.v                                             $HDL_DIR/value_correct.v                                            "
+Running PRESTO HDLC
+Compiling source file ../hdl/top_pipe.v
+Compiling source file ../hdl/add_v2.v
+Compiling source file ../hdl/comp.v
+Compiling source file ../hdl/cordic.v
+Compiling source file ../hdl/mul_mantissa.v
+Compiling source file ../hdl/mul.v
+Compiling source file ../hdl/div_mantissa.v
+Warning:  ../hdl/div_mantissa.v:29: Parameter keyword used in local parameter declaration. (VER-329)
+Compiling source file ../hdl/div.v
+Compiling source file ../hdl/value_correct.v
+Presto compilation completed successfully.
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb'
+1
+# elaborate your design
+elaborate $TOPLEVEL -architecture verilog -library $TOPLEVEL
+Loading db file '/usr/cad/synopsys/synthesis/cur/libraries/syn/gtech.db'
+Loading db file '/usr/cad/synopsys/synthesis/cur/libraries/syn/standard.sldb'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 163 in file
+	'../hdl/top_pipe.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           176            |    auto/user     |
+===============================================
+
+Statistics for case statements in always block at line 214 in file
+	'../hdl/top_pipe.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           218            |    auto/user     |
+===============================================
+
+Inferred memory devices in process
+	in routine top_pipe line 201 in file
+		'../hdl/top_pipe.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    done_out_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   square_done_reg   | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|      state_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully. (top_pipe)
+Elaborated 1 design.
+Current design is now 'top_pipe'.
+Information: Building the design 'add_v2'. (HDL-193)
+Warning:  ../hdl/add_v2.v:136: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/add_v2.v:137: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/add_v2.v:139: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/add_v2.v:150: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/add_v2.v:160: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine add_v2 line 36 in file
+		'../hdl/add_v2.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      carry_reg      | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|     result_reg      | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       cnt_reg       | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (add_v2)
+Information: Building the design 'comp'. (HDL-193)
+
+Inferred memory devices in process
+	in routine comp line 33 in file
+		'../hdl/comp.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    exp_same_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|       op1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       op2_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    sign_same_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|     comp/139     |   64   |    1    |      6       |
+|     comp/184     |   64   |    1    |      6       |
+======================================================
+Presto compilation completed successfully. (comp)
+Information: Building the design 'cordic'. (HDL-193)
+
+Inferred memory devices in process
+	in routine cordic line 28 in file
+		'../hdl/cordic.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Z_tmp_reg      | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  need_repeated_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|       Z_2_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       Z_1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       Y_2_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       Y_1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       X_2_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       X_1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      X_tmp_reg      | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      Y_tmp_reg      | Flip-flop |  64   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    need_bias_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   cordic_cnt_reg    | Flip-flop |   6   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (cordic)
+Information: Building the design 'value_correct'. (HDL-193)
+
+Inferred memory devices in process
+	in routine value_correct line 19 in file
+		'../hdl/value_correct.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    quadrant_reg     | Flip-flop |   3   |  Y  | N  | N  | N  | Y  | N  | N  |
+| correct_result_reg  | Flip-flop |  63   |  Y  | N  | N  | N  | Y  | N  | N  |
+| correct_result_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|    exponent_reg     | Flip-flop |  11   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (value_correct)
+Information: Building the design 'div'. (HDL-193)
+Presto compilation completed successfully. (div)
+Information: Building the design 'mul'. (HDL-193)
+Presto compilation completed successfully. (mul)
+Information: Building the design 'div_mantissa' instantiated from design 'div' with
+	the parameters "DATAWIDTH=57". (HDL-193)
+Warning:  ../hdl/div_mantissa.v:52: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/div_mantissa.v:87: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 37 in file
+	'../hdl/div_mantissa.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            41            |    auto/user     |
+===============================================
+
+Statistics for case statements in always block at line 62 in file
+	'../hdl/div_mantissa.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/user     |
+===============================================
+
+Inferred memory devices in process
+	in routine div_mantissa_DATAWIDTH57 line 31 in file
+		'../hdl/div_mantissa.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine div_mantissa_DATAWIDTH57 line 62 in file
+		'../hdl/div_mantissa.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   quotient_e_reg    | Flip-flop |  57   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       CNT_reg       | Flip-flop |  57   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    divisor_e_reg    | Flip-flop |  114  |  Y  | N  | N  | N  | Y  | N  | N  |
+|   dividend_e_reg    | Flip-flop |  114  |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully. (div_mantissa_DATAWIDTH57)
+Information: Building the design 'mul_mantissa'. (HDL-193)
+
+Statistics for case statements in always block at line 40 in file
+	'../hdl/mul_mantissa.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            48            |     no/user      |
+===============================================
+
+Inferred memory devices in process
+	in routine mul_mantissa line 20 in file
+		'../hdl/mul_mantissa.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      P_CNT_reg      | Flip-flop |   7   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     isdone_reg      | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|      state_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       ra_reg        | Flip-flop |  54   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       rs_reg        | Flip-flop |  54   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       rp_reg        | Flip-flop |  109  |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully. (mul_mantissa)
+1
+# Solve Multiple Instance
+set uniquify_naming_style "%s_mydesign_%d"
+%s_mydesign_%d
+uniquify
+Information: Uniquified 3 instances of design 'add_v2'. (OPT-1056)
+Information: Uniquified 3 instances of design 'comp'. (OPT-1056)
+1
+# link the design
+current_design $TOPLEVEL
+Current design is 'top_pipe'.
+{top_pipe}
+link
+
+  Linking design 'top_pipe'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (13 designs)              /home/u107/u107061240/ICLAB/final_v2/syn/top_pipe.db, etc
+  saed32hvt_ss0p95v125c (library) /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+  saed32io_wb_ss0p95v125c_2p25v (library) /usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
+  dw_foundation.sldb (library) /usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb
+
+1
+1
+source -echo -verbose 1_setting.tcl 
+# Setting Design and I/O Environment
+set_operating_conditions -library saed32hvt_ss0p95v125c ss0p95v125c
+Using operating conditions 'ss0p95v125c' found in library 'saed32hvt_ss0p95v125c'.
+1
+set_driving_cell -library saed32io_wb_ss0p95v125c_2p25v -lib_cell I1025_EW -pin {DOUT} [all_inputs]	
+1
+set_load [load_of "saed32io_wb_ss0p95v125c_2p25v/D4I1025_EW/DIN"] [all_outputs]
+1
+#D4I1025 capacitance => same as "set_load  26.238159   [all_outputs]"
+# Setting wireload model
+set auto_wire_load_selection area_reselect
+area_reselect
+set_wire_load_mode enclosed
+1
+set_wire_load_selection_group predcaps
+1
+# Setting Timing Constraints
+###  ceate your clock here
+create_clock -name clk -period $TEST_CYCLE  [get_ports clk]
+1
+###  set clock constrain
+set_ideal_network       [get_ports clk]
+1
+set_dont_touch_network  [all_clocks]
+1
+# I/O delay should depend on the real enironment. Here only shows an example of setting
+set_input_delay  2  -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+1
+set_output_delay 1  -clock clk [all_outputs]
+1
+# Setting DRC Constraint
+# Defensive setting: smallest fanout_load 0.041 and WLM max fanout # 20 => 0.041*20 = 0.82
+# max_transition and max_capacitance are given in the cell library
+set_max_fanout 0.82 $TOPLEVEL
+1
+# Area Constraint
+set_max_area   0
+1
+1
+source -echo -verbose 2_compile.tcl 
+# this cell's verilog will cause ncverilog to hang 
+set_dont_use [format "%s%s" saed32hvt_ss0p95v125c {/SDFFNASRX1*}]
+1
+# before synthesis settings
+set case_analysis_with_logic_constants true
+true
+set_fix_multiple_port_nets -feedthroughs -outputs -constants -buffer_constants
+1
+####check design####
+check_design > ./$RPT_DIR/check_design.log
+check_timing > ./$RPT_DIR/check_timing.log
+set_clock_gating_style -max_fanout 10
+
+Current clock gating style....
+Sequential cell: latch
+Minimum bank bitwidth: 3
+Minimum bank bitwidth for enhanced clock gating: 6
+Maximum fanout: 10
+Setup time for clock gate: 0.000000
+Hold time for clock gate: 0.000000
+Clock gating circuitry (positive edge): and
+Clock gating circuitry (negative edge): or
+ Note: inverter between clock gating circuitry 
+       and (negative edge) register clock pin.
+Control point insertion: none
+Control signal for control point: scan_enable
+Observation point insertion: false
+Observation logic depth: 5
+1
+# Synthesis all design (using : compile_ultra)
+# you can add "-gate_clock" to do gated-clock
+# you can add "-incremental" for higher performance
+compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | R-2020.09-DWBB_202009.5 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 145 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'top_pipe'
+
+  Loading target library 'saed32io_wb_ss0p95v125c_2p25v'
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Loaded alib file './alib-52/saed32io_wb_ss0p95v125c_2p25v.db.alib' (placeholder)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'cordic'
+Information: Added key list 'DesignWare' to design 'cordic'. (DDB-72)
+ Implement Synthetic for 'cordic'.
+  Processing 'comp_mydesign_0'
+Information: Added key list 'DesignWare' to design 'comp_mydesign_0'. (DDB-72)
+ Implement Synthetic for 'comp_mydesign_0'.
+  Processing 'add_v2_mydesign_0'
+Information: Added key list 'DesignWare' to design 'add_v2_mydesign_0'. (DDB-72)
+ Implement Synthetic for 'add_v2_mydesign_0'.
+  Processing 'div'
+ Implement Synthetic for 'div'.
+  Processing 'mul'
+ Implement Synthetic for 'mul'.
+  Processing 'div_mantissa_DATAWIDTH57'
+Information: The register 'divisor_e_reg[104]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[105]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[106]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[107]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[108]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[109]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[110]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[111]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[112]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[113]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[94]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[95]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[96]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[97]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[98]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[99]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[100]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[101]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[102]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[103]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[84]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[85]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[86]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[87]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[88]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[89]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[90]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[91]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[92]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[93]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[74]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[75]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[76]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[77]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[78]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[79]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[80]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[81]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[82]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[83]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[64]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[65]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[66]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[67]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[68]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[69]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[70]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[71]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[72]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[73]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[54]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[55]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[56]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[57]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[58]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[59]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[60]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[61]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[62]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[63]' is a constant and will be removed. (OPT-1206)
+Information: The register 'divisor_e_reg[53]' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'div_mantissa_DATAWIDTH57'.
+Information: Added key list 'DesignWare' to design 'div_mantissa_DATAWIDTH57'. (DDB-72)
+  Processing 'mul_mantissa'
+Information: Added key list 'DesignWare' to design 'mul_mantissa'. (DDB-72)
+Information: The register 'ra_reg[53]' is a constant and will be removed. (OPT-1206)
+Information: In design 'mul_mantissa', the register 'ra_reg[52]' is removed because it is merged to 'rs_reg[53]'. (OPT-1215)
+ Implement Synthetic for 'mul_mantissa'.
+  Processing 'value_correct'
+Information: The register 'quadrant_reg[1]' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'value_correct'.
+Information: Added key list 'DesignWare' to design 'value_correct'. (DDB-72)
+  Processing 'top_pipe'
+ Implement Synthetic for 'top_pipe'.
+  Processing 'SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+  Processing 'SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+  Processing 'SNPS_CLOCK_GATE_HIGH_value_correct_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+  Processing 'SNPS_CLOCK_GATE_HIGH_cordic_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+  Processing 'SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+  Processing 'SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Skipping clock gating on design div, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_pipe_RSOP_34, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_pipe_DW01_inc_J7_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DP_OP_384J3_124_4565_J3_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_add_J3_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_inc_J3_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_38, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_295_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_296_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_1_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_1_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_298J2_125_9341_J2_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_297J2_124_9341_J2_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_2_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_3_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design cordic_DP_OP_204J1_126_5962_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design cordic_DP_OP_203J1_125_7011_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design cordic_DP_OP_202J1_124_5962_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design cordic_DW01_inc_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_value_correct_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design value_correct_DP_OP_25J6_128_4456_J6_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_DP_OP_28J4_124_78_J4_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_DW01_inc_J4_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_DW01_inc_J4_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_DP_OP_28J4_125_2428_J4_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_DW01_inc_J4_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_DW01_inc_J4_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design top_pipe_DP_OP_13J7_124_4689_J7_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_299J2_126_6112_J2_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_302J2_129_2016_J2_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_mantissa_DATAWIDTH57_DW01_inc_J5_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_mantissa_DATAWIDTH57_DW01_sub_J5_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design div_mantissa_DATAWIDTH57_DW_cmp_J5_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_mantissa_RSOP_40, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_mantissa_DW01_inc_J6_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_mantissa_DW01_inc_J6_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design mul_mantissa_DP_OP_45J6_124_2904_J6_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_MUX_OP_64_6_1_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW01_sub_J2_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_298J2_125_9341_J2_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_298J2_125_9341_J2_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_297J2_124_9341_J2_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_297J2_124_9341_J2_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_3_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DW_cmp_J2_3_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_295_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_295_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_299J2_126_6112_J2_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_299J2_126_6112_J2_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_296_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_RSOP_296_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_302J2_129_2016_J2_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design comp_mydesign_0_DP_OP_302J2_129_2016_J2_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DP_OP_384J3_124_4565_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DP_OP_384J3_124_4565_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_add_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_add_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_inc_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design add_v2_mydesign_0_DW01_inc_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_mul_mantissa_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_30, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_31, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_32, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_33, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_34, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_div_mantissa_DATAWIDTH57_mydesign_35, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_value_correct_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_value_correct_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_30, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_31, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_32, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_33, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_34, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_35, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_36, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_37, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_38, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_39, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_40, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_41, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_42, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_43, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_44, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_45, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_46, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_47, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_48, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_49, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_50, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_51, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_52, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_53, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_54, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_55, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_56, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_57, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_58, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_cordic_mydesign_59, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_30, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_31, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_32, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_33, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_34, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_35, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_36, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_comp_mydesign_0_mydesign_37, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_add_v2_mydesign_0_mydesign_28, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design mul_mantissa. (PWR-730)
+Information: Performing clock-gating on design value_correct. (PWR-730)
+Information: Performing clock-gating on design top_pipe. (PWR-730)
+Information: Performing clock-gating on design div_mantissa_DATAWIDTH57. (PWR-730)
+Information: Performing clock-gating on design add_v2_mydesign_2. (PWR-730)
+Information: Performing clock-gating on design comp_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design add_v2_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design add_v2_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design comp_mydesign_2. (PWR-730)
+Information: Performing clock-gating on design cordic. (PWR-730)
+Information: Performing clock-gating on design comp_mydesign_0. (PWR-730)
+Information: In design 'top_pipe', the register 'U4/U0/rs_reg[0]' is removed because it is merged to 'U4/U0/ra_reg[0]'. (OPT-1215)
+WARNING: cell U22/quadrant_reg[0] ignores exact_map
+WARNING: cell U22/quadrant_reg[2] ignores exact_map
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'top_pipe'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'div'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'mul'. (DDB-72)
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:50   54137.2      0.09       8.8    7050.9                           996958656.0000
+    0:00:52   53702.4      0.27      48.7    8615.0                           989347008.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Mapping 'comp_mydesign_2_DP_OP_299_147_798_2'
+  Mapping 'comp_mydesign_2_DP_OP_302_148_6669_2'
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:01:04   51815.9      0.00       0.0    1962.0                           893589056.0000
+    0:01:04   51815.9      0.00       0.0    1962.0                           893589056.0000
+    0:01:04   51815.9      0.00       0.0    1962.0                           893589056.0000
+    0:01:04   51815.9      0.00       0.0    1962.0                           893589056.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+    0:01:09   51740.4      0.00       0.0    1963.9                           893178560.0000
+    0:01:10   51692.6      0.00       0.0    1980.7                           892174720.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:01:17   51156.4      0.00       0.0    1931.8                           858230528.0000
+    0:01:18   50752.8      0.00       0.0    1907.0                           842361792.0000
+    0:01:19   50752.8      0.00       0.0    1907.0                           842361792.0000
+    0:01:19   50752.8      0.00       0.0    1907.0                           842361792.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:22   50237.2      0.00       0.0    2135.3                           753888832.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:01:29   52109.4      0.00       0.0     402.9 U13/net95212              790640128.0000
+    0:01:30   52334.9      0.00       0.0     327.2 U2/net99488               791991424.0000
+    0:01:31   52446.4      0.00       0.0     300.3                           793131584.0000
+    0:01:31   52446.4      0.00       0.0     300.3                           793131584.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:31   52446.4      0.00       0.0     300.3                           793131584.0000
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+    0:01:37   51522.4      0.00       0.0     210.4                           741389632.0000
+    0:01:37   51522.4      0.00       0.0     210.4                           741389632.0000
+    0:01:37   51522.4      0.00       0.0     210.4                           741389632.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:39   51569.6      0.00       0.0     210.4                           745571840.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:40   51569.6      0.00       0.0     210.4                           745571840.0000
+    0:01:41   51520.3      0.00       0.0     210.4                           740098112.0000
+    0:01:41   51520.3      0.00       0.0     210.4                           740098112.0000
+    0:01:41   51520.3      0.00       0.0     210.4                           740098112.0000
+    0:01:43   51567.9      0.00       0.0     210.4                           744683456.0000
+    0:01:45   51561.5      0.00       0.0     210.0 U13/net95519              744649728.0000
+    0:01:46   52036.5      0.00       0.0     167.1 U4/net100583              758979008.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:47   52224.8      0.00       0.0     155.5                           762670976.0000
+    0:01:48   52144.0      0.00       0.0     155.5                           753141120.0000
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+  Loading target library 'saed32io_wb_ss0p95v125c_2p25v'
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+
+Information: There are 28 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03   52144.0      0.00       0.0     155.5                           753141120.0000
+    0:00:03   52144.0      0.00       0.0     155.5                           753141120.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:05   52118.1      0.00       0.0     183.6                           752962432.0000
+    0:00:05   52118.1      0.00       0.0     183.6                           752962432.0000
+    0:00:05   52118.1      0.00       0.0     183.6                           752962432.0000
+    0:00:05   52118.1      0.00       0.0     183.6                           752962432.0000
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:08   51692.1      0.00       0.0     183.0                           743247680.0000
+    0:00:08   51692.1      0.00       0.0     183.0                           743247680.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09   51739.7      0.00       0.0     183.0                           745993344.0000
+    0:00:10   52242.9      0.00       0.0     123.7 U3/U0/n660                751461696.0000
+    0:00:11   52289.1      0.00       0.0     117.5                           751896704.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:12   52243.9      0.00       0.0     117.5                           747516032.0000
+    0:00:14   52036.5      0.00       0.0     117.3                           745186944.0000
+    0:00:17   51979.6      0.00       0.0     117.1                           744489344.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+    0:00:18   52032.2      0.00       0.0     117.1                           749670464.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:18   65121.8      0.00       0.0     117.1                           749670464.0000
+    0:00:19   65074.0      0.00       0.0     117.1                           744958464.0000
+    0:00:22   65071.8      0.00       0.0     117.1                           744893888.0000
+    0:00:23   65152.2      0.00       0.0     108.9                           745275136.0000
+    0:00:23   65152.2      0.00       0.0     108.9                           745275136.0000
+    0:00:23   65152.2      0.00       0.0     108.9                           745275136.0000
+    0:00:23   65152.2      0.00       0.0     108.9                           745275136.0000
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+
+Information: There are 28 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02   52105.6      0.00       0.0     108.9                           745275136.0000
+    0:00:02   52105.6      0.00       0.0     108.9                           745275136.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:05   52063.4      0.00       0.0     113.1                           744826176.0000
+    0:00:05   52063.4      0.00       0.0     113.1                           744826176.0000
+    0:00:05   52063.4      0.00       0.0     113.1                           744826176.0000
+    0:00:05   52063.4      0.00       0.0     113.1                           744826176.0000
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+  Global Optimization (Phase 62)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:07   51954.7      0.00       0.0     112.9                           743376384.0000
+    0:00:07   51954.7      0.00       0.0     112.9                           743376384.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+
+
+  Beginning Design Rule Fixing  (max_fanout)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09   52011.3      0.00       0.0     112.9                           749033600.0000
+    0:00:10   52206.5      0.00       0.0     103.2                           751110848.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_svt 0.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:11   52157.0      0.00       0.0     103.2                           746140864.0000
+    0:00:13   52067.5      0.00       0.0     103.2                           745207424.0000
+    0:00:15   52019.0      0.00       0.0     103.0                           744453632.0000
+    0:00:15   52019.0      0.00       0.0     103.0                           744453632.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+    0:00:17   52063.7      0.00       0.0     103.0                           748726784.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:17   65081.3      0.00       0.0     103.0                           748726784.0000
+    0:00:18   65039.4      0.00       0.0     103.0                           744870336.0000
+    0:00:20   65039.2      0.00       0.0     103.0                           744848320.0000
+    0:00:22   65146.3      0.00       0.0      98.8                           744904512.0000
+    0:00:22   65146.3      0.00       0.0      98.8                           744904512.0000
+    0:00:22   65146.3      0.00       0.0      98.8                           744904512.0000
+    0:00:22   65146.3      0.00       0.0      98.8                           744904512.0000
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+# remove dummy ports
+remove_unconnected_ports [get_cells -hierarchical *]
+1
+remove_unconnected_ports [get_cells -hierarchical *] -blast_buses
+Removing port 'a[53]' from design 'mul_mantissa'
+Removing port 'a[52]' from design 'mul_mantissa'
+Removing port 'b[53]' from design 'mul_mantissa'
+Removing port 'b[52]' from design 'mul_mantissa'
+Removing port 'dividend[56]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'dividend[55]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'dividend[54]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'dividend[53]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'divisor[56]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'divisor[55]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'divisor[54]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'divisor[53]' from design 'div_mantissa_DATAWIDTH57'
+Removing port 'quadrant[1]' from design 'value_correct'
+1
+1
+source -echo -verbose 3_report.tcl 
+###-----------------------------Naming Rules----------------------------
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -rules verilog -hierarchy
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+define_name_rules name_rule -case_insensitive
+1
+change_names -hierarchy -rules name_rule
+1
+###--------------------------Netlist-related------------------------------------
+write -format ddc     -hierarchy -output ./netlist/${TOPLEVEL}_syn.ddc
+Writing ddc file './netlist/top_pipe_syn.ddc'.
+1
+write -format verilog -hierarchy -output ./netlist/${TOPLEVEL}_syn.v
+Writing verilog file '/home/u107/u107061240/ICLAB/final_v2/syn/netlist/top_pipe_syn.v'.
+1
+write_sdf -version 1.0  -context verilog ./netlist/${TOPLEVEL}_syn.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/u107/u107061240/ICLAB/final_v2/syn/netlist/top_pipe_syn.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+write_sdc ./netlist/${TOPLEVEL}_syn.sdc
+1
+write_saif -output ./netlist/${TOPLEVEL}_syn.saif 
+Information: Writing backward SAIF information to file './netlist/top_pipe_syn.saif'. (PWR-458)
+1
+###---------------------------Syntheis result reports----------------------------
+# ===== Timing report =====
+report_timing -delay min -max_paths 4 > ./report/report_hold_${TOPLEVEL}.out
+report_timing -delay max -max_paths 4 > ./report/report_setup_${TOPLEVEL}.out
+report_timing -path full -delay max -max_paths 1 -nworst 1 -significant_digits 4 > ./report/report_time_${TOPLEVEL}.out
+# ===== Area report =====
+report_area -hier  > ./report/report_area_${TOPLEVEL}.out
+# ===== Power report =====
+report_power -hier > ./report/report_power_${TOPLEVEL}.out
+# ===== violations =====
+report_constraint -all_violators > ./report/report_violation_${TOPLEVEL}.out
+exit
+
+Memory usage for this session 251 Mbytes.
+Memory usage for this session including child processes 251 Mbytes.
+CPU usage for this session 178 seconds ( 0.05 hours ).
+Elapsed time for this session 184 seconds ( 0.05 hours ).
+
+Thank you...

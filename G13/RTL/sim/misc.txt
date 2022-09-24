@@ -1,0 +1,15 @@
+ncverilog -f sim.f
+請將附錄資料夾golden內模擬的.golden放在同一資料夾
+測試方式為testbench先讀出input.dat內部的測資後依序餵給RTL電路，待RTL電路完成計算給出done訊號後，與answer.dat的答案進行比對
+這邊請注意由於mode 4~7 為採用cordic algorithm，所以跟answer的答案(from calculator)會有誤差所以會failed，至於誤差值我們有在報告中詳細述說
+mode 0 adddtion
+mode 1 subtraction
+mode 2 multiplication
+mode 3 division 
+mode 4 sine
+mode 5 cosine
+mode 6 square root
+mode 7 natural logarithm
+
+input 的形式為 operand_1(64bits)_mode(3bits)_operand_2(64bits)     在mode = 4-7的時候，我們只會用到一個operand，所以只有operand_1會有值，operand_2會設為0
+output 的形式為 result(64 bits)

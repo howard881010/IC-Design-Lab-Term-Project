@@ -1,0 +1,2 @@
+這個電路其實在timing = 5的時候slack是可以通過的，但我們為了達到 apr bonus的標準，我們嘗試其他的timing constrain，
+最後發現在timing = 9.1 的時候，可以達到bonus的標準。

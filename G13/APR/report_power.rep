@@ -1,0 +1,55 @@
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : CHIP
+Version: R-2020.09-SP5
+Date   : Tue Jan 18 02:35:09 2022
+****************************************
+
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+CHIP                   ForQA             saed32hvt_ss0p95v125c
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+CHIP                                    371.389  780.287 8.18e+08 1.97e+03 100.0
+  U0 (top_pipe)                         369.555  779.645 8.13e+08 1.96e+03  99.6
+    U11 (add_v2_mydesign_1)              10.956   26.742 3.69e+07   74.629   3.8
+    U13 (comp_mydesign_1)                18.832   50.188 9.78e+07  166.796   8.5
+    U12 (add_v2_mydesign_0)              12.477   25.969 3.84e+07   76.801   3.9
+    U14 (comp_mydesign_0)                18.131   48.217 9.92e+07  165.592   8.4
+    U2 (cordic)                          50.288  182.170 1.55e+08  387.767  19.7
+    U22 (value_correct)                   1.484   36.516 1.67e+07   54.654   2.8
+    U3 (div)                             46.381  147.993 1.02e+08  296.495  15.1
+      U0 (div_mantissa_DATAWIDTH57)      42.984  144.917 8.70e+07  274.913  14.0
+    U4 (mul)                             22.922  121.311 7.73e+07  221.510  11.2
+      U0 (mul_mantissa)                  18.630  116.208 5.94e+07  194.221   9.9
+    U0 (add_v2_mydesign_2)               14.565   28.662 3.93e+07   82.539   4.2
+    U1 (comp_mydesign_2)                 69.886   91.345 1.05e+08  265.957  13.5
+1
